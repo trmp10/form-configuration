@@ -260,13 +260,17 @@ export default function OnboardingFormsPage() {
             </div>
 
             <div style={{ backgroundColor: 'var(--color-bg-default)', border: '1px solid var(--color-border-subtle)', borderRadius: 'var(--radius-medium)', padding: 'var(--spacing-20)', marginTop: 'var(--spacing-16)' }}>
-              <p className="font-semibold" style={{ fontSize: 'var(--font-size-heading-sm)', color: 'var(--color-text-default)', marginBottom: 'var(--spacing-4)' }}>Holiday pay method</p>
-              <p className="font-medium" style={{ fontSize: 'var(--font-size-body)', color: 'var(--color-text-secondary)', marginBottom: 'var(--spacing-20)' }}>
-                Choose whether the worker sets their own holiday pay rate, or whether an admin defines it.
-              </p>
-              <div className="flex items-start" style={{ gap: 'var(--spacing-32)' }}>
-                <RadioButton label="Worker sets rate" name="holiday-pay-sub" checked={tab.holidayPayMethod === 'worker'} onChange={() => updateTab({ holidayPayMethod: 'worker' })} />
-                <RadioButton label="Admin sets rate" name="holiday-pay-sub" checked={tab.holidayPayMethod === 'admin'} onChange={() => updateTab({ holidayPayMethod: 'admin' })} />
+              <div className="flex items-start justify-between">
+                <div>
+                  <p className="font-semibold" style={{ fontSize: 'var(--font-size-heading-sm)', color: 'var(--color-text-default)', marginBottom: 'var(--spacing-4)' }}>Legal and Tax</p>
+                  <p className="font-medium" style={{ fontSize: 'var(--font-size-body)', color: 'var(--color-text-secondary)' }}>
+                    Collects CIS reference number  ⋅  VAT registration status  ⋅  Related tax details
+                  </p>
+                </div>
+                <div className="flex items-center" style={{ gap: 'var(--spacing-8)' }}>
+                  <span className="font-medium" style={{ fontSize: 'var(--font-size-body)', color: 'var(--color-text-secondary)' }}>Show</span>
+                  <Toggle checked={tab.showLegalTax} onChange={() => updateTab({ showLegalTax: !tab.showLegalTax })} />
+                </div>
               </div>
             </div>
 
@@ -352,25 +356,21 @@ export default function OnboardingFormsPage() {
             <div style={{ backgroundColor: 'var(--color-bg-default)', border: '1px solid var(--color-border-subtle)', borderRadius: 'var(--radius-medium)', padding: 'var(--spacing-20)', marginTop: 'var(--spacing-16)' }}>
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="font-semibold" style={{ fontSize: 'var(--font-size-heading-sm)', color: 'var(--color-text-default)', marginBottom: 'var(--spacing-4)' }}>Legal and Tax</p>
-                  <p className="font-medium" style={{ fontSize: 'var(--font-size-body)', color: 'var(--color-text-secondary)' }}>
-                    Collects CIS reference number  ⋅  VAT registration status  ⋅  Related tax details
-                  </p>
-                </div>
-                <div className="flex items-center" style={{ gap: 'var(--spacing-8)' }}>
-                  <span className="font-medium" style={{ fontSize: 'var(--font-size-body)', color: 'var(--color-text-secondary)' }}>Show</span>
-                  <Toggle checked={tab.showLegalTax} onChange={() => updateTab({ showLegalTax: !tab.showLegalTax })} />
-                </div>
-              </div>
-            </div>
-
-            <div style={{ backgroundColor: 'var(--color-bg-default)', border: '1px solid var(--color-border-subtle)', borderRadius: 'var(--radius-medium)', padding: 'var(--spacing-20)', marginTop: 'var(--spacing-16)' }}>
-              <div className="flex items-start justify-between">
-                <div>
                   <p className="font-semibold" style={{ fontSize: 'var(--font-size-heading-sm)', color: 'var(--color-text-default)', marginBottom: 'var(--spacing-4)' }}>HMRC starter form statement</p>
                   <p className="font-medium" style={{ fontSize: 'var(--font-size-body)', color: 'var(--color-text-secondary)' }}>Starter declaration</p>
                 </div>
                 <LabelBadge label="Required" variant="neutral" size="small" />
+              </div>
+            </div>
+
+            <div style={{ backgroundColor: 'var(--color-bg-default)', border: '1px solid var(--color-border-subtle)', borderRadius: 'var(--radius-medium)', padding: 'var(--spacing-20)', marginTop: 'var(--spacing-16)' }}>
+              <p className="font-semibold" style={{ fontSize: 'var(--font-size-heading-sm)', color: 'var(--color-text-default)', marginBottom: 'var(--spacing-4)' }}>Holiday pay method</p>
+              <p className="font-medium" style={{ fontSize: 'var(--font-size-body)', color: 'var(--color-text-secondary)', marginBottom: 'var(--spacing-20)' }}>
+                Choose whether the worker sets their own holiday pay rate, or whether an admin defines it.
+              </p>
+              <div className="flex items-start" style={{ gap: 'var(--spacing-32)' }}>
+                <RadioButton label="Worker sets rate" name="holiday-pay-umb" checked={tab.holidayPayMethod === 'worker'} onChange={() => updateTab({ holidayPayMethod: 'worker' })} />
+                <RadioButton label="Admin sets rate" name="holiday-pay-umb" checked={tab.holidayPayMethod === 'admin'} onChange={() => updateTab({ holidayPayMethod: 'admin' })} />
               </div>
             </div>
 
