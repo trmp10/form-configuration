@@ -36,7 +36,7 @@ export default function NewOnboardingFormPage() {
       <div style={{ marginBottom: 'var(--spacing-16)' }}>
         <Breadcrumb
           items={[
-            { label: 'Onboarding forms', onClick: () => router.push('/onboarding-forms') },
+            { label: 'Form configuration', onClick: () => router.push('/form-configuration') },
             { label: 'New onboarding form' },
           ]}
         />
@@ -85,9 +85,9 @@ export default function NewOnboardingFormPage() {
         }}
       >
         <div style={{ maxWidth: 1080, margin: '0 auto', paddingLeft: 'var(--spacing-20)', paddingRight: 'var(--spacing-20)', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 'var(--spacing-8)' }}>
-          <Button variant="secondary" size="medium" onClick={() => router.push('/onboarding-forms')}>Cancel</Button>
+          <Button variant="secondary" size="medium" onClick={() => router.push('/form-configuration')}>Cancel</Button>
           {selectedType && (
-            <Button variant="primary" size="medium" onClick={() => router.push(`/onboarding-forms/upload?type=${selectedType}`)}>
+            <Button variant="primary" size="medium" onClick={() => router.push(`/form-configuration/upload?type=${selectedType}`)}>
               Continue
             </Button>
           )}

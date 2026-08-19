@@ -10,7 +10,7 @@ export default function OnboardingLayout({ children }: { children: React.ReactNo
   const nav: SidebarNavSection[] = [
     {
       items: [
-        { label: 'Form configuration', href: '/onboarding-forms', active: pathname === '/' || pathname.startsWith('/onboarding-forms') },
+        { label: 'Form configuration', href: '/form-configuration', active: pathname === '/' || pathname.startsWith('/form-configuration') },
       ],
     },
   ];

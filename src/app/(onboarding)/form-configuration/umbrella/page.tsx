@@ -35,21 +35,21 @@ const initialState: FormState = {
   workerStatus: 'new-starter',
 };
 
-export default function PayeFormConfigPage() {
+export default function UmbrellaFormConfigPage() {
   const router = useRouter();
   const [form, setForm] = useState<FormState>(initialState);
   const { toast } = useToast();
 
   const update = (updates: Partial<FormState>) => setForm(f => ({ ...f, ...updates }));
-  const handleCancel = () => router.push('/onboarding-forms');
+  const handleCancel = () => router.push('/form-configuration');
   const handleSave = () => toast('Changes saved');
 
   return (
     <div style={{ padding: '0 var(--spacing-32) var(--spacing-32)', maxWidth: 640, width: '100%', margin: '0 auto' }}>
 
       <PageHeader
-        title="PAYE form configuration"
-        description="Configure the fields shown to PAYE workers during registration."
+        title="Umbrella form configuration"
+        description="Configure the fields shown to Umbrella workers during registration."
         size="medium"
         bottomSlot={
           <Alert variant="info" emphasis="subtle">
@@ -89,16 +89,16 @@ export default function PayeFormConfigPage() {
         <Panel title="Right to work" description="Set whether workers provide right-to-work documents during registration or through a separate process.">
           <div className="flex flex-col" style={{ gap: 'var(--spacing-16)' }}>
             <RadioButton
-              label="Required on Worker registration"
-              description="Workers upload one or more right-to-work documents during registration"
-              name="rtw-collection-paye"
+              label="Collect during Worker Registration"
+              description="Workers upload the required documents as part of their registration"
+              name="rtw-collection-umb"
               checked={form.rtwCollection === 'on-form'}
               onChange={() => update({ rtwCollection: 'on-form' })}
             />
             <RadioButton
-              label="Collected elsewhere"
-              description="Workers provide right-to-work documents outside Worker registration"
-              name="rtw-collection-paye"
+              label="Collect elsewhere"
+              description="Workers provide the documents outside of Worker Registration"
+              name="rtw-collection-umb"
               checked={form.rtwCollection === 'other-service'}
               onChange={() => update({ rtwCollection: 'other-service' })}
             />
@@ -122,11 +122,14 @@ export default function PayeFormConfigPage() {
       </div>
 
       <div style={{ marginTop: 'var(--spacing-16)' }}>
-        <Panel title="Holiday pay method" description="Set whether workers choose their own holiday pay method or use the default settings.">
+        <Panel
+          title="Holiday pay method"
+          description="Set whether workers choose their own holiday pay method or use the default settings."
+        >
           <div className="flex flex-col" style={{ gap: 'var(--spacing-16)' }}>
             <RadioButton
               label="Allow workers to choose their holiday pay method"
-              name="holiday-pay-choice-paye"
+              name="holiday-pay-choice-umb"
               checked={form.holidayPayChoice === 'allow-user'}
               onChange={() => update({ holidayPayChoice: 'allow-user' })}
             />
@@ -144,7 +147,7 @@ export default function PayeFormConfigPage() {
             )}
             <RadioButton
               label="Use the company default settings"
-              name="holiday-pay-choice-paye"
+              name="holiday-pay-choice-umb"
               checked={form.holidayPayChoice === 'company-default'}
               onChange={() => update({ holidayPayChoice: 'company-default' })}
             />

@@ -35,7 +35,7 @@ export default function OnboardingFormsPage() {
           Form configuration
         </h1>
         <p className="font-medium" style={{ fontSize: 'var(--font-size-body)', color: 'var(--color-text-secondary)' }}>
-          Configure fields shown to workers during onboarding registration.
+          Configure fields shown to workers on the Worker Registration Form.
         </p>
       </div>
 
@@ -45,7 +45,7 @@ export default function OnboardingFormsPage() {
         sortColumn={null}
         sortDir="asc"
         onSort={() => {}}
-        onRowClick={row => router.push(`/onboarding-forms/${row.slug}`)}
+        onRowClick={row => router.push(`/form-configuration/${row.slug}`)}
         page={1}
         totalPages={1}
         perPage={rows.length}
@@ -55,6 +55,7 @@ export default function OnboardingFormsPage() {
         renderCell={(col, row) => {
           if (col.type !== 'custom') return null;
           if (col.key === 'status') return <LabelBadge label="Modified" variant="teal" size="small" />;
+          if (col.key === 'workerType') return <span style={{ color: 'var(--color-text-default)' }}>{row.workerType}</span>;
           return row[col.key as keyof ConfigRow];
         }}
       />
