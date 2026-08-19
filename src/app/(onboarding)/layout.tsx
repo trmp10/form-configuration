@@ -10,7 +10,7 @@ export default function OnboardingLayout({ children }: { children: React.ReactNo
   const nav: SidebarNavSection[] = [
     {
       items: [
-        { label: 'Onboarding forms', href: '/onboarding-forms', active: pathname === '/' || pathname.startsWith('/onboarding-forms') },
+        { label: 'Form configuration', href: '/onboarding-forms', active: pathname === '/' || pathname.startsWith('/onboarding-forms') },
       ],
     },
   ];
@@ -26,7 +26,7 @@ export default function OnboardingLayout({ children }: { children: React.ReactNo
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo-mark.svg" alt="finity" width={32} height={32} className="shrink-0" />
             <span className="font-semibold" style={{ color: 'var(--color-base-white)', fontSize: 'var(--font-size-heading-sm)' }}>
-              Payroll
+              Finity
             </span>
           </div>
         }
