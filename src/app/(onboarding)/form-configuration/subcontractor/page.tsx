@@ -118,7 +118,7 @@ export default function SubcontractorFormConfigPage() {
               <div style={{ backgroundColor: 'var(--color-bg-muted)', borderRadius: 'var(--radius-md)', padding: 'var(--spacing-16)' }}>
                 <p className="font-semibold" style={{ fontSize: 'var(--font-size-compact)', color: 'var(--color-text-default)', marginBottom: 'var(--spacing-8)' }}>Field</p>
                 {['CIS reference number', 'VAT registration status', 'Related tax details'].map((field, i, arr) => (
-                  <p key={field} className="font-medium" style={{ fontSize: 'var(--font-size-compact)', color: 'var(--color-text-default)', padding: 'var(--spacing-12) 0', borderBottom: i < arr.length - 1 ? '1px solid var(--color-border-subtle)' : 'none' }}>{field}</p>
+                  <p key={field} className="font-medium" style={{ fontSize: 'var(--font-size-compact)', color: 'var(--color-text-default)', padding: i < arr.length - 1 ? 'var(--spacing-12) 0' : 'var(--spacing-12) 0 0', borderBottom: i < arr.length - 1 ? '1px solid var(--color-border-subtle)' : 'none' }}>{field}</p>
                 ))}
               </div>
             )}
