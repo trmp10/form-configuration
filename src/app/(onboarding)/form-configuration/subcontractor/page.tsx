@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Alert, Button, HelperText, PageHeader, Panel, RadioButton, Select, useToast } from '@design-finity/design-system';
+import { Alert, Button, Checkbox, HelperText, PageHeader, Panel, RadioButton, Select, useToast } from '@design-finity/design-system';
 
 const alwaysFields = [
   'Full name',
@@ -20,14 +20,14 @@ const workerStatusOptions = [
 
 type FormState = {
   rtwCollection: 'on-form' | 'other-service';
-  legalTaxRequired: 'required' | 'not-required';
   workerStatus: string;
+  sdcQuestionnaire: boolean;
 };
 
 const initialState: FormState = {
   rtwCollection: 'on-form',
-  legalTaxRequired: 'required',
   workerStatus: 'new-starter',
+  sdcQuestionnaire: true,
 };
 
 export default function SubcontractorFormConfigPage() {
@@ -104,32 +104,34 @@ export default function SubcontractorFormConfigPage() {
       <div style={{ marginTop: 'var(--spacing-16)' }}>
         <Panel
           title="Legal and Tax"
-          description="Set whether workers need to provide legal and tax details during Worker Registration."
+          description="Workers are required to provide the following legal and tax details."
         >
-          <div className="flex flex-col" style={{ gap: 'var(--spacing-16)' }}>
-            <RadioButton
-              label="Required during Worker Registration"
-              description="Workers provide their legal and tax details during registration"
-              name="legal-tax-required-sub"
-              checked={form.legalTaxRequired === 'required'}
-              onChange={() => update({ legalTaxRequired: 'required' })}
-            />
-            {form.legalTaxRequired === 'required' && (
-              <div style={{ backgroundColor: 'var(--color-bg-muted)', borderRadius: 'var(--radius-md)', padding: 'var(--spacing-16)' }}>
-                <p className="font-semibold" style={{ fontSize: 'var(--font-size-compact)', color: 'var(--color-text-default)', marginBottom: 'var(--spacing-8)' }}>Field</p>
-                {['CIS reference number', 'VAT registration status', 'Related tax details'].map((field, i, arr) => (
-                  <p key={field} className="font-medium" style={{ fontSize: 'var(--font-size-compact)', color: 'var(--color-text-default)', padding: i < arr.length - 1 ? 'var(--spacing-12) 0' : 'var(--spacing-12) 0 0', borderBottom: i < arr.length - 1 ? '1px solid var(--color-border-subtle)' : 'none' }}>{field}</p>
-                ))}
-              </div>
-            )}
-            <RadioButton
-              label="Not required"
-              description="Workers do not need to provide legal and tax details during registration"
-              name="legal-tax-required-sub"
-              checked={form.legalTaxRequired === 'not-required'}
-              onChange={() => update({ legalTaxRequired: 'not-required' })}
-            />
+          <div className="grid" style={{ gridTemplateColumns: '1fr 90px 90px', gap: 'var(--spacing-16)', borderBottom: '1px solid var(--color-border-subtle)' }}>
+            <span className="font-semibold" style={{ fontSize: 'var(--font-size-compact)', color: 'var(--color-text-default)', padding: 'var(--spacing-8) 0' }}>Field</span>
+            <span className="font-semibold" style={{ fontSize: 'var(--font-size-compact)', color: 'var(--color-text-default)', padding: 'var(--spacing-8) 0' }}>Show</span>
+            <span className="font-semibold" style={{ fontSize: 'var(--font-size-compact)', color: 'var(--color-text-default)', padding: 'var(--spacing-8) 0' }}>Required</span>
           </div>
+          {['HMRC registration confirmation', 'UTR number'].map((field, i, arr) => (
+            <div key={field} className="grid items-center" style={{ gridTemplateColumns: '1fr 90px 90px', gap: 'var(--spacing-16)', borderBottom: i < arr.length - 1 ? '1px solid var(--color-border-subtle)' : 'none' }}>
+              <span className="font-medium" style={{ fontSize: 'var(--font-size-compact)', color: 'var(--color-text-default)', padding: 'var(--spacing-12) 0' }}>{field}</span>
+              <span className="font-medium" style={{ fontSize: 'var(--font-size-compact)', color: 'var(--color-text-tertiary)', padding: 'var(--spacing-12) 0' }}>Always</span>
+              <span className="font-medium" style={{ fontSize: 'var(--font-size-compact)', color: 'var(--color-text-tertiary)', padding: 'var(--spacing-12) 0' }}>Always</span>
+            </div>
+          ))}
+        </Panel>
+      </div>
+
+      <div style={{ marginTop: 'var(--spacing-16)' }}>
+        <Panel
+          title="Supervision, Direction, and Control (SDC) questionnaire"
+          description="Set whether a worker is required to complete the SDC questionnaire."
+        >
+          <Checkbox
+            label="Require SDC questionnaire"
+            description="15 questions to help you assess self-employed status"
+            checked={form.sdcQuestionnaire}
+            onChange={e => update({ sdcQuestionnaire: e.target.checked })}
+          />
         </Panel>
       </div>
 
