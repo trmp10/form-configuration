@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Alert, Button, Checkbox, HelperText, PageHeader, Panel, RadioButton, Select, useToast } from '@design-finity/design-system';
 
@@ -130,7 +130,7 @@ export default function SubcontractorFormConfigPage() {
             label="Require SDC questionnaire"
             description="15 questions to help you assess self-employed status"
             checked={form.sdcQuestionnaire}
-            onChange={e => update({ sdcQuestionnaire: e.target.checked })}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => update({ sdcQuestionnaire: e.target.checked })}
           />
         </Panel>
       </div>
